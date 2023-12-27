@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->  
+    <link rel="stylesheet" href="/dist/new/public.css" /> 
+    <link rel="stylesheet" href="/dist/new/signin.css" />  
+</head>
+<body>
+	<div class="container">
+		<form 
+			action="/user/signIn" 
+			method="post">
+
+			<h1>
+				<a href="#">MyBlog</a>
+			</h1>
+
+			<label 
+			for="userName" 
+			class="sr-only">用户名</label> 
+			
+			<input 
+			type="text" 
+			
+			class="form-control" 
+			placeholder="用户名" 
+			th:field="${user.userId}"
+			required>
+			
+			<label 
+			for="password" 
+			class="sr-only">密码</label>
+			
+			<input 
+			type="password" 
+			
+			class="form-control"
+			placeholder="密码" 
+			th:field="${user.password}"
+			required>
+
+			<span class="text-danger red"  id="msg" th:text="${msg}"></span><br>
+			<button 
+			class="btn btn-lg btn-primary btn-block" 
+			type="submit"
+			id="submit">登录</button>
+
+			<a 
+			class="visitor" 
+			href="index.html">访客登录</a>
+		</form>
+	</div>
+
+
+	<div id="footer">
+		<a target="_blank" 
+			href="#">
+		Blog</a>
+		by NX.		
+	</div>
+	<!-- footer -->
+</body>
+</html>

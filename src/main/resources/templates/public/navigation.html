@@ -1,0 +1,67 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+  <body>
+  
+    <div th:fragment="nav">
+    	<nav class="navbar navbar-default">
+  		<div class="container-fluid">
+    	<!-- Brand and toggle get grouped for better mobile display -->
+    	<!-- class="navbar-header" -->
+    	<div class="navbar-header">
+      		
+     		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      			<!--<span class="sr-only">Blog</span>  -->
+      			<span class="sr-only">Blog</span>
+     		</button>
+      		<a class="navbar-brand" href="/">Blog</a>
+      		
+    	</div>
+
+    	<!-- Collect the nav links, forms, and other content for toggling -->
+    	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    		<!-- 搜索 -->
+      		<form class="navbar-form navbar-left" action="/search" method="post">
+        		<div class="form-group">
+          			<input name="search" type="text" class="form-control" placeholder="Search Article">
+        		</div>
+        		<button type="submit" class="btn btn-default">Search</button>
+      		</form>
+      
+      		<form class="navbar-form navbar-left">
+        		<div class="form-group">
+          			<input type="date" class="form-control" placeholder="Search by Time" value = '<fmt:formatDate value="" type="date"/>'>
+        		</div>
+        		<button type="submit" class="btn btn-default">Search by Time</button>
+      		</form>
+			<ul class="nav navbar-nav navbar-right">
+      			<li th:if="${#servletContext.getAttribute('user') != null}">
+      				<a href=/article/publish>Write Article</a>
+      			</li>
+        		<li class="dropdown" th:if="${#servletContext.getAttribute('user') != null}">
+          			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          			<span th:text="${#servletContext.getAttribute('user').userName}"></span>
+          			<span class="caret"></span>
+          			</a>
+          			<ul class="dropdown-menu">
+            			<li><a href="/article/profile/articles">Manage Article</a></li>
+            			<li><a href="/user/personal">Personel</a></li>
+            			<li><a href="/user/logout">Log Out</a></li>
+          			</ul>
+        		</li>
+        		<li th:if="${#servletContext.getAttribute('user') == null}">
+          		<a href="/user/signIn">Log In</a>
+        		</li>
+      		</ul>
+    	</div>
+		</div>
+		</nav>
+	</div>
+  </body>
+</html>
+
+
+
+

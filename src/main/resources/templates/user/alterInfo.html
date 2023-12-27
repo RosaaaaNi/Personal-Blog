@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+    
+    
+    <link href="/dist/css/bootstrap.min.css" rel="stylesheet">    
+    <link href="/assets/css/ie10-viewport-bug-workaround.css.css" rel="stylesheet">
+    <link href="/dist/css/signup.css" rel="stylesheet">
+    <script src="/assets/js/ie-emulation-modes-warning.js.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="container">
+        <form action="/user/alterInfo" method="post" class="form-signup">
+            <h2 class="form-signup-heading">Alter your Info</h2>
+			
+    		<label for="userName" >UserName</label>
+            <input type="text" name="userName" id="userName" class="form-control" th:value="${user.userName}" required autofocus>
+  						
+            <label for="name" >Name</label>
+            <input type="text" name="name" id="name" class="form-control" th:value="${user.name}" required autofocus>
+
+            <label for="password" >Password</label>
+            <input type="text" name="password" id="password" class="form-control" th:value="${user.password}" required autofocus>
+        
+            <label for="phoneNumber" >PhoneNumber</label>
+            <input type="text" name="phoneNumber" id="phoneNumber" class="form-control" th:value="${user.phoneNumber}" required autofocus>
+            
+            <label for="email" >Email</label>
+            <input type="text" name="email" id="email" class="form-control" th:value="${user.email}" required autofocus>
+            
+            <label for="weChat" >WeChat</label>
+            <input type="text" name="weChat" id="weChat" class="form-control" th:value="${user.weChat}" required autofocus>
+            
+            <label for="birthday" >Birthday</label>
+            <input type="date" name="birthday" value = '<fmt:formatDate value="" type="date"/>' id="birthday" class="form-control" placeholder="Birthday" required autofocus>
+
+            <div class="radio">
+                <label>
+                    <input name="sex" type="radio" value="female">
+                    female
+                </label>
+            </div>
+      
+            <div class="radio">
+                <label>
+                    <input name="sex" type="radio" value="male">
+                    male
+                </label>
+            </div>
+
+            <label for="describe">Describe</label>
+            <textarea name="describe" id="describe" class="form-control" th:value="${user.describe}"></textarea>      
+            
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Continue</button>
+        </form>
+
+    </div>
+    
+<div th:include="public/footer :: footer"></div> 
+</body>
+</html>
